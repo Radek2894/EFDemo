@@ -1,10 +1,32 @@
-﻿namespace EFDemo.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace EFDemo.Models
 {
     public class Person
     {
         public int Id { get; set; }
+        public virtual ICollection<Address>? Addresses
+        {
+            get; set;
+        }
+        [Required]
+        [MaxLength(100)]
+        [Column(TypeName = "varchar(100)")]
         public string FirstName { get; set; }
+        [Required]
+        [MaxLength(100)]
         public string LastName { get; set; }
+
+        [MaxLength(2)]
+        public string Country { get; set; }
+
+        [Required]
+        [MaxLength(4)]
+
+        public string Year { get; set; }
+        public ICollection<PersonGroup>? PersonGroups { get; set; }
     }
 
 }
+
